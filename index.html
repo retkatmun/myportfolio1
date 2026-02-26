@@ -11,36 +11,40 @@
   <body
     class="bg-black text-white selection:bg-yellow-400 selection:text-black"
   >
-    <!-- NAV -->
-    <header
-      class="fixed w-full bg-black/80 backdrop-blur-md border-b border-zinc-800 z-50"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <h1 class="text-xl font-bold tracking-wider">
-          Dev <span class="text-yellow-400 font-bold">Scholar</span>
-        </h1>
+   
+   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <h1 class="text-xl font-bold tracking-wider">
+    Dev <span class="text-yellow-400 font-bold">Scholar</span>
+  </h1>
 
-        <nav class="hidden md:flex gap-8 text-gray-400">
-          <a href="#about" class="hover:text-yellow-400 font-bold">About</a>
-          <a href="#work" class="hover:text-yellow-400 transition font-bold"
-            >Work</a
-          >
-          <a href="#skills" class="hover:text-yellow-400 transition font-bold"
-            >Skills</a
-          >
-          <a href="#contact" class="hover:text-yellow-400 transition font-bold"
-            >Contact</a
-          >
-          <a
-            href="#Testimonials"
-            class="hover:text-yellow-400 transition font-bold"
-            >Testimonials</a
-          >
-        </nav>
-      </div>
-    </header>
+  <!-- Desktop Menu -->
+  <nav class="hidden md:flex gap-8 text-gray-400">
+    <a href="#about" class="hover:text-yellow-400 font-bold">About</a>
+    <a href="#work" class="hover:text-yellow-400 transition font-bold">Work</a>
+    <a href="#skills" class="hover:text-yellow-400 transition font-bold">Skills</a>
+    <a href="#contact" class="hover:text-yellow-400 transition font-bold">Contact</a>
+    <a href="#Testimonials" class="hover:text-yellow-400 transition font-bold">Testimonials</a>
+  </nav>
+
+  <!-- Hamburger Button (Mobile) -->
+  <button id="hamburger" class="md:hidden focus:outline-none">
+    <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+</div>
+
+<!-- Mobile Menu -->
+<nav id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-black/90 backdrop-blur-md border-t border-zinc-800 md:hidden z-40">
+  <ul class="flex flex-col text-center text-gray-400 py-4 gap-4">
+    <li><a href="#about" class="hover:text-yellow-400 font-bold">About</a></li>
+    <li><a href="#work" class="hover:text-yellow-400 font-bold">Work</a></li>
+    <li><a href="#skills" class="hover:text-yellow-400 font-bold">Skills</a></li>
+    <li><a href="#contact" class="hover:text-yellow-400 font-bold">Contact</a></li>
+    <!-- <li><a href="#Testimonials" class="hover:text-yellow-400 font-bold">Testimonials</a></li> -->
+  </ul>
+</nav>
 
     <!-- HERO -->
     <section class="min-h-screen flex items-center pt-24 bg-black">
@@ -240,7 +244,7 @@
 
        <!-- Toolsgraphics -->
       <div class="bg-black/60 backdrop-blur-xl p-8 rounded-3xl border border-gray-800 hover:border-yellow-400 hover:shadow-yellow-400/10 hover:shadow-xl transition">
-        <h4 class="text-xl font-semibold mb-6 text-yellow-400">Tools Graphics</h4>
+        <h4 class="text-xl font-semibold mb-6 text-yellow-400">Tools </h4>
         <div class="flex flex-wrap justify-center gap-3">
           <span class="tech-pill">corelDraw</span>
           <span class="tech-pill">canva</span>
@@ -252,7 +256,116 @@
     </div>
   </div>
 </section>
+<div class="text-center mt-6">
+  <p class="text-gray-400 mb-2">Rate My Portfolio</p>
 
+  <!-- RATING SECTION -->
+<section id="rating" class="py-24 bg-black border-t border-gray-800">
+  <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+
+    <!-- STAR INPUT -->
+    <div class="bg-[#0f172a] p-8 rounded-3xl border border-gray-800 text-center">
+      <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+        Rate My Work
+      </h3>
+      <p class="text-gray-400 mb-6">
+        Your feedback helps me grow 🚀
+      </p>
+
+      <form 
+        action="https://formspree.io/f/xvzblwwg"
+        method="POST"
+        id="ratingForm"
+        class="space-y-6"
+      >
+        <!-- Stars -->
+        <div class="flex justify-center gap-2 text-4xl cursor-pointer">
+          <span class="star text-gray-600">★</span>
+          <span class="star text-gray-600">★</span>
+          <span class="star text-gray-600">★</span>
+          <span class="star text-gray-600">★</span>
+          <span class="star text-gray-600">★</span>
+        </div>
+
+        <p id="rating-text" class="text-yellow-400 font-semibold"></p>
+
+        <input type="hidden" id="ratingValue" name="rating" required />
+
+        <textarea 
+          name="message"
+          placeholder="Leave a short review (optional)"
+          class="w-full bg-black border border-gray-700 p-3 rounded-xl text-white focus:border-yellow-400 outline-none"
+          rows="4"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="w-full bg-yellow-400 text-black py-3 rounded-xl font-semibold hover:bg-yellow-300 transition"
+        >
+          Submit Rating
+        </button>
+
+        <p id="success-msg" class="hidden text-green-400 mt-3">
+          ⭐ Thanks for your feedback!
+        </p>
+      </form>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="bg-[#0f172a] p-8 rounded-3xl border border-gray-800">
+      <h3 class="text-2xl font-bold text-white text-center mb-4">
+        Client Ratings
+      </h3>
+
+      <div class="text-center mb-6">
+        <div class="text-5xl font-bold text-yellow-400">
+          <span id="avgRating">4.9</span>
+          <span class="text-lg text-gray-400">/ 5</span>
+        </div>
+        <p class="text-gray-400">
+          Based on <span id="totalRatings">128</span> reviews
+        </p>
+      </div>
+
+      <!-- Bars -->
+      <div class="space-y-3">
+
+        <div class="rating-row">
+          <span>5 ★</span>
+          <div class="bar"><div id="bar5"></div></div>
+          <small id="count5">98</small>
+        </div>
+
+        <div class="rating-row">
+          <span>4 ★</span>
+          <div class="bar"><div id="bar4"></div></div>
+          <small id="count4">21</small>
+        </div>
+
+        <div class="rating-row">
+          <span>3 ★</span>
+          <div class="bar"><div id="bar3"></div></div>
+          <small id="count3">6</small>
+        </div>
+
+        <div class="rating-row">
+          <span>2 ★</span>
+          <div class="bar"><div id="bar2"></div></div>
+          <small id="count2">2</small>
+        </div>
+
+        <div class="rating-row">
+          <span>1 ★</span>
+          <div class="bar"><div id="bar1"></div></div>
+          <small id="count1">1</small>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
 
     <!-- CONTACT -->
 <section id="contact" class="py-24 bg-black">
@@ -402,6 +515,153 @@
   }, { threshold: 0.5 });
 
   observer.observe(document.querySelector('#about'));
+</script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+<script>
+const stars = document.querySelectorAll(".star");
+const ratingValue = document.getElementById("rating-value");
+const ratingInput = document.getElementById("rating-input");
+const ratingForm = document.getElementById("rating-form");
+
+let currentRating = 0;
+
+stars.forEach(star => {
+  // Hover highlight
+  star.addEventListener("mouseover", () => highlightStars(star.dataset.value));
+  star.addEventListener("mouseout", () => highlightStars(currentRating));
+
+  // Click to rate
+  star.addEventListener("click", () => {
+    currentRating = star.dataset.value;
+    ratingInput.value = currentRating;
+    updateStars();
+    sendRating();
+  });
+});
+
+function highlightStars(rating){
+  stars.forEach(star => {
+    if(star.dataset.value <= rating){
+      star.classList.add("text-yellow-400");
+      star.classList.remove("text-gray-500");
+    } else {
+      star.classList.add("text-gray-500");
+      star.classList.remove("text-yellow-400");
+    }
+  });
+}
+
+function updateStars(){
+  ratingValue.innerText = `${currentRating}/5`;
+}
+
+// Send rating to email using Formspree
+function sendRating(){
+  fetch(ratingForm.action, {
+    method: "POST",
+    body: new FormData(ratingForm),
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if(response.ok){
+      alert("Thanks for rating!");
+    } else {
+      alert("Oops! Something went wrong.");
+    }
+  })
+  .catch(() => alert("Oops! Something went wrong."));
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ========== COUNTER ========== */
+  const counters = document.querySelectorAll(".counter");
+
+  const animateCounter = (counter) => {
+    const target = +counter.dataset.target;
+    let count = 0;
+    const speed = 2000 / target;
+
+    const update = () => {
+      count++;
+      counter.innerText = count;
+      if (count < target) setTimeout(update, speed);
+    };
+
+    update();
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      counters.forEach(animateCounter);
+      observer.disconnect();
+    }
+  }, { threshold: 0.6 });
+
+  const about = document.getElementById("about");
+  if (about) observer.observe(about);
+
+  /* ========== STAR INPUT ========== */
+  const stars = document.querySelectorAll(".star");
+  const ratingValue = document.getElementById("ratingValue");
+  const ratingText = document.getElementById("rating-text");
+  const successMsg = document.getElementById("success-msg");
+
+  const messages = {
+    1: "😞 Very poor",
+    2: "😐 Could be better",
+    3: "🙂 Good",
+    4: "😃 Very good",
+    5: "🤩 Excellent!"
+  };
+
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      stars.forEach((s, i) => {
+        s.classList.toggle("text-yellow-400", i <= index);
+        s.classList.toggle("text-gray-600", i > index);
+      });
+
+      const rating = index + 1;
+      ratingValue.value = rating;
+      ratingText.textContent = messages[rating];
+    });
+  });
+
+  /* ========== ANALYTICS ========== */
+  const ratingData = { 5: 98, 4: 21, 3: 6, 2: 2, 1: 1 };
+
+  const total = Object.values(ratingData).reduce((a, b) => a + b, 0);
+  const avg = (
+    (5 * ratingData[5] +
+     4 * ratingData[4] +
+     3 * ratingData[3] +
+     2 * ratingData[2] +
+     1 * ratingData[1]) / total
+  ).toFixed(1);
+
+  document.getElementById("avgRating").textContent = avg;
+  document.getElementById("totalRatings").textContent = total;
+
+  for (let i = 1; i <= 5; i++) {
+    const percent = (ratingData[i] / total) * 100;
+    document.getElementById(`count${i}`).textContent = ratingData[i];
+    document.getElementById(`bar${i}`).style.width = percent + "%";
+  }
+
+});
 </script>
   </body>
 </html>
