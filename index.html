@@ -218,35 +218,35 @@
     >
       © 2026 Dev Scholar — Full Stack Developer
     </footer>
-
-    <!-- Counter Script -->
+<!-- Slow Counter Script -->
 <script>
   const counters = document.querySelectorAll('.counter');
-  const speed = 200; // lower = faster
 
-  const animateCounters = (entry) => {
-    if(entry.isIntersecting){
-      counters.forEach(counter => {
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
-          const increment = target / speed;
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const duration = 2000; // total time in ms for counting
+    const stepTime = Math.ceil(duration / target); // time between increments
 
-          if(count < target){
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 20);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
-      observer.disconnect(); // Stop observing after animation
-    }
+    const update = () => {
+      count++;
+      counter.innerText = count;
+      if(count < target){
+        setTimeout(update, stepTime);
+      }
+    };
+
+    update();
   };
 
+  // Trigger animation when About section is in view
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(animateCounters);
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        counters.forEach(animateCounter);
+        observer.disconnect(); // run only once
+      }
+    });
   }, { threshold: 0.5 });
 
   observer.observe(document.querySelector('#about'));
