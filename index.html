@@ -1,38 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scholar | Front-End Developer</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-html { scroll-behavior: smooth; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scholar | Front-End Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
 
-/* Mouse Glow */
-.cursor-glow {
-  position: fixed;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 60%);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  transition: background 0.3s ease;
-}
+      /* Mouse Glow */
+      .cursor-glow {
+        position: fixed;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.35) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        transition: background 0.3s ease;
+      }
 
-/* Fade-in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+      /* Fade-in animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .slider-track {
+        display: flex;
+        gap: 1.5rem;
+        animation: scroll 25s linear infinite;
+      }
+
+    
+/* Slider Animations */
 .slider-track {
   display: flex;
-  gap: 1.5rem;
+  min-width: max-content;
   animation: scroll 25s linear infinite;
 }
 
@@ -40,207 +54,368 @@ html { scroll-behavior: smooth; }
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-</style>
-</head>
 
-<body class="bg-black text-white overflow-x-hidden transition-colors duration-500" id="body">
+.reverse-slider {
+  animation: scroll-reverse 25s linear infinite;
+}
 
-<!-- Mouse Glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
+@keyframes scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
 
-<!-- ================= NAVBAR ================= -->
-<nav class="fixed w-full bg-black/70 backdrop-blur-lg z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
-    <h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-      Scholar
-    </h1>
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .w-64 { width: 16rem; }
+  .h-64 { height: 16rem; }
+}
+    </style>
+  </head>
 
-    <ul class="hidden md:flex space-x-8 text-gray-300">
-      <li><a href="#about" class="hover:text-cyan-400">About</a></li>
-      <li><a href="#services" class="hover:text-cyan-400">Services</a></li>
-      <li><a href="#experience" class="hover:text-cyan-400">Experience</a></li>
-      <li><a href="#projects" class="hover:text-cyan-400">Projects</a></li>
-      <li><a href="#gallery" class="hover:text-cyan-400">Gallery</a></li>
-      <li><a href="#blog" class="hover:text-cyan-400">Blog</a></li>
-      <li><a href="#contact" class="hover:text-cyan-400">Contact</a></li>
-    </ul>
+  <body
+    class="bg-black text-white overflow-x-hidden transition-colors duration-500"
+    id="body"
+  >
+    <!-- Mouse Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-    <div class="flex items-center gap-4">
-      <button id="themeToggle" class="px-4 py-2 rounded-full border border-cyan-400 text-sm hover:bg-cyan-500 hover:text-black transition">🌙</button>
-      <button id="menuBtn" class="md:hidden text-3xl">☰</button>
-    </div>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="fixed w-full bg-black/70 backdrop-blur-lg z-50">
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-6 py-5"
+      >
+        <h1
+          class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+        >
+          Scholar.
+        </h1>
+
+        <ul class="hidden md:flex space-x-8 text-gray-300">
+          <li><a href="#about" class="hover:text-cyan-400">About</a></li>
+          <li><a href="#services" class="hover:text-cyan-400">Services</a></li>
+          <li>
+            <a href="#experience" class="hover:text-cyan-400">Experience</a>
+          </li>
+          <li><a href="#projects" class="hover:text-cyan-400">Projects</a></li>
+          <li><a href="#gallery" class="hover:text-cyan-400">Gallery</a></li>
+          <li><a href="#blog" class="hover:text-cyan-400">Blog</a></li>
+          <li><a href="#contact" class="hover:text-cyan-400">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-4">
+          <button
+            id="themeToggle"
+            class="px-4 py-2 rounded-full border border-cyan-400 text-sm hover:bg-cyan-500 hover:text-black transition"
+          >
+            🌙
+          </button>
+          <button id="menuBtn" class="md:hidden text-3xl">☰</button>
+        </div>
+      </div>
+
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-black text-center py-6 space-y-4"
+      >
+        <a href="#about" class="block">About</a>
+        <a href="#services" class="block">Services</a>
+        <a href="#experience" class="block">Experience</a>
+        <a href="#projects" class="block">Projects</a>
+        <a href="#gallery" class="block">Gallery</a>
+        <a href="#blog" class="block">Blog</a>
+        <a href="#contact" class="block">Contact</a>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section
+      class="min-h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left px-6 gap-16 fade-in"
+    >
+      <div class="max-w-xl">
+        <h2 class="text-5xl md:text-7xl font-extrabold mb-6">
+          Hi, I'm
+          <span
+            class="bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent animate-pulse"
+            >Scholar</span
+          >
+        </h2>
+        <p class="text-gray-400 text-lg mb-8">
+          I build scalable web applications with modern frontends, powerful
+          backend systems, and clean UI architecture — plus eye-catching graphic
+          designs that bring brands to life..
+        </p>
+        <a
+          href="#projects"
+          class="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-110 transition transform shadow-lg shadow-cyan-500/40"
+          >Explore My Work</a
+        >
+      </div>
+
+     <div class="relative">
+  <!-- Glowing blurred background -->
+  <div
+    class="w-80 h-80 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-3xl blur-3xl opacity-30 absolute animate-pulse"
+  ></div>
+
+  <!-- Your image -->
+  <div
+    class="w-80 h-80 bg-black border border-cyan-500/30 rounded-3xl backdrop-blur-xl overflow-hidden flex items-center justify-center hover:rotate-6 hover:scale-105 transition duration-500 shadow-lg shadow-purple-500/40"
+  >
+    <img
+      src="/asset/scholar-removebg-preview.png" 
+      alt="Scholar" 
+      class="w-full h-full object-cover rounded-3xl"
+    />
   </div>
+</div>
+    </section>
 
-  <div id="mobileMenu" class="hidden md:hidden bg-black text-center py-6 space-y-4">
-    <a href="#about" class="block">About</a>
-    <a href="#services" class="block">Services</a>
-    <a href="#experience" class="block">Experience</a>
-    <a href="#projects" class="block">Projects</a>
-    <a href="#gallery" class="block">Gallery</a>
-    <a href="#blog" class="block">Blog</a>
-    <a href="#contact" class="block">Contact</a>
-  </div>
-</nav>
+    <!-- ================= ABOUT ================= -->
+   
+        
+  <section id="about" class="py-20 px-6 text-center fade-in max-w-4xl mx-auto">
+    
+  <h3 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+    <span>About Me <br></span>Turning Ideas Into Digital Realities
+  </h3>
 
-<!-- ================= HERO ================= -->
-<section class="min-h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left px-6 gap-16 fade-in">
-  <div class="max-w-xl">
-    <h2 class="text-5xl md:text-7xl font-extrabold mb-6">
-      Hi, I'm 
-      <span class="bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent animate-pulse">Scholar</span>
-    </h2>
-    <p class="text-gray-400 text-lg mb-8">Front-End Developer building modern, responsive, high-performance web experiences.</p>
-    <a href="#projects" class="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:scale-110 transition transform shadow-lg shadow-cyan-500/40">Explore My Work</a>
-  </div>
-
-  <div class="relative">
-    <div class="w-80 h-80 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-3xl blur-3xl opacity-30 absolute animate-pulse"></div>
-    <div class="w-80 h-80 bg-black border border-cyan-500/30 rounded-3xl backdrop-blur-xl flex items-center justify-center text-6xl font-bold hover:rotate-6 hover:scale-105 transition duration-500 shadow-lg shadow-purple-500/40">👨‍💻</div>
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="py-24 px-6 text-center fade-in">
-  <h3 class="text-4xl font-bold mb-6 text-cyan-400">About Me</h3>
-  <p class="max-w-3xl mx-auto text-gray-400 text-lg">
-    Passionate about building elegant interfaces and solving real-world problems with clean, scalable frontend systems.
+  <p class="text-gray-300 text-base md:text-lg leading-relaxed">
+    Hi! I'm <span class="text-white font-semibold">Retkatmun</span>, a passionate Front-End developer and designer who loves transforming ideas into seamless, visually stunning digital experiences.  
+    I began my coding journey in <span class="text-white font-semibold">2023 at Axia Hub</span>, mastering HTML, CSS, JavaScript, React, and Bootstrap.  
+    I then joined <span class="text-white font-semibold">Blue House</span>, where I not only learned but also tutored and worked on exciting projects.  
+    Currently, I’m advancing my skills at <span class="text-white font-semibold">Karl Kumm University</span> in Cybersecurity, while hands-on at <span class="text-white font-semibold">Blockfuse Lab</span>, building projects with Python, React.js, Tailwind, TypeScript, and more.
   </p>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services" class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in">
-  <h3 class="text-4xl font-bold mb-12 text-purple-400">Services</h3>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div class="p-8 border border-cyan-500/30 rounded-xl hover:shadow-lg hover:shadow-cyan-500/40 transition">
-      <h4 class="text-2xl font-bold mb-4">Web Design</h4>
-      <p class="text-gray-400">Modern responsive UI design.</p>
-    </div>
-    <div class="p-8 border border-purple-500/30 rounded-xl hover:shadow-lg hover:shadow-purple-500/40 transition">
-      <h4 class="text-2xl font-bold mb-4">Frontend Dev</h4>
-      <p class="text-gray-400">Tailwind & JavaScript apps.</p>
-    </div>
-    <div class="p-8 border border-pink-500/30 rounded-xl hover:shadow-lg hover:shadow-pink-500/40 transition">
-      <h4 class="text-2xl font-bold mb-4">Optimization</h4>
-      <p class="text-gray-400">Performance & SEO improvement.</p>
-    </div>
-  </div>
-</section>
+    <!-- ================= SERVICES ================= -->
+    <section
+      id="services"
+      class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in"
+    >
+      <h3 class="text-4xl font-bold mb-12 text-purple-400">Services</h3>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="p-8 border border-cyan-500/30 rounded-xl hover:shadow-lg hover:shadow-cyan-500/40 transition"
+        >
+          <h4 class="text-2xl font-bold mb-4">Web Design</h4>
+          <p class="text-gray-400">Modern responsive UI design.</p>
+        </div>
+        <div
+          class="p-8 border border-purple-500/30 rounded-xl hover:shadow-lg hover:shadow-purple-500/40 transition"
+        >
+          <h4 class="text-2xl font-bold mb-4">Frontend Dev</h4>
+          <p class="text-gray-400">Tailwind & JavaScript apps.</p>
+        </div>
+        <div
+          class="p-8 border border-pink-500/30 rounded-xl hover:shadow-lg hover:shadow-pink-500/40 transition"
+        >
+          <h4 class="text-2xl font-bold mb-4">Optimization</h4>
+          <p class="text-gray-400">Performance & SEO improvement.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="py-24 text-center px-6 fade-in">
-  <h3 class="text-4xl font-bold mb-12 text-cyan-400">Experience</h3>
-  <p class="text-gray-400">2024 - Present | Front-End Developer</p>
-</section>
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" class="py-24 text-center px-6 fade-in">
+      <h3 class="text-4xl font-bold mb-12 text-cyan-400">Experience</h3>
+      <p class="text-gray-400">2024 - Present | Front-End Developer</p>
+    </section>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in">
-  <h3 class="text-4xl font-bold mb-12 text-purple-400">Projects</h3>
-  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-    <div class="p-8 border border-cyan-500/30 rounded-xl hover:scale-105 transition">Quiz App</div>
-    <div class="p-8 border border-purple-500/30 rounded-xl hover:scale-105 transition">Portfolio Website</div>
-  </div>
-</section>
+    <!-- ================= PROJECTS ================= -->
+    <section
+      id="projects"
+      class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in"
+    >
+      <h3 class="text-4xl font-bold mb-12 text-purple-400">Projects</h3>
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div
+          class="p-8 border border-cyan-500/30 rounded-xl hover:scale-105 transition"
+        >
+          Quiz App
+        </div>
+        <div
+          class="p-8 border border-purple-500/30 rounded-xl hover:scale-105 transition"
+        >
+          Portfolio Website
+        </div>
+      </div>
+    </section>
 
-<!-- ================= MOVING GALLERY ================= -->
-<section id="gallery" class="py-24 text-center overflow-hidden fade">
+    <!-- ================= MOVING GALLERY ================= -->
+   <section id="gallery" class="py-24 text-center overflow-hidden fade">
   <h3 class="text-4xl font-bold text-yellow-400 mb-12">Gallery</h3>
 
-  <div class="relative max-w-full overflow-hidden">
+  <!-- First Slider (Left → Right) -->
+  <div class="relative max-w-full overflow-hidden mb-12">
     <div class="flex slider-track gap-6">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="Gallery 1">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f" alt="Gallery 2">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Gallery 3">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="Gallery 4">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Gallery 5">
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w1.jpeg" alt="Gallery 1"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w2.jpeg" alt="Gallery 2"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w3.jpeg" alt="Gallery 3"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w4.jpeg" alt="Gallery 4"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w5.jpeg" alt="Gallery 5"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w11.jpeg" alt="Gallery 11"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/13.jpeg" alt="Gallery 13"/>
 
-      <!-- Duplicate slides for seamless loop -->
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="Gallery 1">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f" alt="Gallery 2">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Gallery 3">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="Gallery 4">
-      <img class="w-80 rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Gallery 5">
+      <!-- Duplicates for seamless loop -->
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w1.jpeg" alt="Gallery 1"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w2.jpeg" alt="Gallery 2"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w3.jpeg" alt="Gallery 3"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w4.jpeg" alt="Gallery 4"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w5.jpeg" alt="Gallery 5"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w11.jpeg" alt="Gallery 11"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/13.jpeg" alt="Gallery 13"/>
+    </div>
+  </div>
+
+  <!-- Second Slider (Right → Left) -->
+  <div class="relative max-w-full overflow-hidden">
+    <div class="flex slider-track reverse-slider gap-6">
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w6.jpeg" alt="Gallery 6"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w7.jpeg" alt="Gallery 7"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w8.jpeg" alt="Gallery 8"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w9.jpeg" alt="Gallery 9"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w10.jpeg" alt="Gallery 10"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w12.jpeg" alt="Gallery 12"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w14.jpeg" alt="Gallery 14"/>
+      <!-- Duplicates for seamless loop -->
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w6.jpeg" alt="Gallery 6"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w7.jpeg" alt="Gallery 7"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w8.jpeg" alt="Gallery 8"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w9.jpeg" alt="Gallery 9"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w10.jpeg" alt="Gallery 10"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w12.jpeg" alt="Gallery 12"/>
+      <img class="w-80 h-80 rounded-xl shadow-lg" src="/asset/w14.jpeg" alt="Gallery 14"/>
     </div>
   </div>
 </section>
 
-<!-- ================= BLOG ================= -->
-<section id="blog" class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in">
-  <h3 class="text-4xl font-bold mb-12 text-purple-400">Latest Blog</h3>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div class="p-6 border border-cyan-500/30 rounded-2xl hover:shadow-lg hover:shadow-cyan-500/40 transition">Mastering Tailwind CSS</div>
-    <div class="p-6 border border-purple-500/30 rounded-2xl hover:shadow-lg hover:shadow-purple-500/40 transition">JavaScript Best Practices</div>
-    <div class="p-6 border border-pink-500/30 rounded-2xl hover:shadow-lg hover:shadow-pink-500/40 transition">AI in Frontend</div>
-  </div>
-</section>
+    <!-- ================= BLOG ================= -->
+    <section
+      id="blog"
+      class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in"
+    >
+      <h3 class="text-4xl font-bold mb-12 text-purple-400">Latest Blog</h3>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          class="p-6 border border-cyan-500/30 rounded-2xl hover:shadow-lg hover:shadow-cyan-500/40 transition"
+        >
+          Mastering Tailwind CSS
+        </div>
+        <div
+          class="p-6 border border-purple-500/30 rounded-2xl hover:shadow-lg hover:shadow-purple-500/40 transition"
+        >
+          JavaScript Best Practices
+        </div>
+        <div
+          class="p-6 border border-pink-500/30 rounded-2xl hover:shadow-lg hover:shadow-pink-500/40 transition"
+        >
+          AI in Frontend
+        </div>
+      </div>
+    </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="py-24 text-center px-6 fade-in">
-  <h3 class="text-4xl font-bold mb-6 text-cyan-400">Contact Me</h3>
-  <div class="max-w-xl mx-auto space-y-4">
-    <input type="text" placeholder="Your Name" class="w-full p-3 bg-black border border-gray-700 rounded-lg">
-    <input type="email" placeholder="Your Email" class="w-full p-3 bg-black border border-gray-700 rounded-lg">
-    <textarea placeholder="Message" class="w-full p-3 bg-black border border-gray-700 rounded-lg"></textarea>
-    <button class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:scale-105 transition">Send Message</button>
-  </div>
-</section>
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="py-24 text-center px-6 fade-in">
+      <h3 class="text-4xl font-bold mb-6 text-cyan-400">Contact Me</h3>
+      <div class="max-w-xl mx-auto space-y-4">
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
+        />
+        <input
+          type="email"
+          placeholder="Your Email"
+          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
+        />
+        <textarea
+          placeholder="Message"
+          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
+        ></textarea>
+        <button
+          class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:scale-105 transition"
+        >
+          Send Message
+        </button>
+      </div>
+    </section>
 
-<footer class="text-center py-6 text-gray-500">© 2026 Scholar | All Rights Reserved</footer>
+    <footer class="text-center py-6 text-gray-500">
+      © 2026 Scholar | All Rights Reserved
+    </footer>
 
-<script>
-// Mobile Menu
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    <script>
+      // Mobile Menu
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () =>
+        mobileMenu.classList.toggle("hidden"),
+      );
 
-// Mouse Glow
-const glow = document.getElementById("cursorGlow");
-document.addEventListener("mousemove", (e) => {
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
+      // Mouse Glow
+      const glow = document.getElementById("cursorGlow");
+      document.addEventListener("mousemove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
 
-// Scroll reveal
-const faders = document.querySelectorAll(".fade-in");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add("show");
-  });
-},{threshold:0.2});
-faders.forEach(el=>observer.observe(el));
+      // Scroll reveal
+      const faders = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.2 },
+      );
+      faders.forEach((el) => observer.observe(el));
 
-// ================= THEME TOGGLE =================
-const themeToggle = document.getElementById("themeToggle");
-let darkMode = true;
-themeToggle.addEventListener("click", () => {
-  darkMode = !darkMode;
-  if(!darkMode){
-    document.body.classList.remove("bg-black","text-white");
-    document.body.classList.add("bg-white","text-black");
-    themeToggle.textContent = "☀";
-    glow.style.background = "radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 60%)";
-  } else {
-    document.body.classList.remove("bg-white","text-black");
-    document.body.classList.add("bg-black","text-white");
-    themeToggle.textContent = "🌙";
-    glow.style.background = "radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 60%)";
-  }
-});
+      // ================= THEME TOGGLE =================
+      const themeToggle = document.getElementById("themeToggle");
+      let darkMode = true;
+      themeToggle.addEventListener("click", () => {
+        darkMode = !darkMode;
+        if (!darkMode) {
+          document.body.classList.remove("bg-black", "text-white");
+          document.body.classList.add("bg-white", "text-black");
+          themeToggle.textContent = "☀";
+          glow.style.background =
+            "radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 60%)";
+        } else {
+          document.body.classList.remove("bg-white", "text-black");
+          document.body.classList.add("bg-black", "text-white");
+          themeToggle.textContent = "🌙";
+          glow.style.background =
+            "radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 60%)";
+        }
+      });
 
-// ================= CAROUSEL =================
-const carousel = document.getElementById("carousel");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("prev");
-let index = 0;
-const totalSlides = 3;
+      // ================= CAROUSEL =================
+      const carousel = document.getElementById("carousel");
+      const nextBtn = document.getElementById("next");
+      const prevBtn = document.getElementById("prev");
+      let index = 0;
+      const totalSlides = 3;
 
-function updateCarousel(){ carousel.style.transform = `translateX(-${index*100}%)`; }
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+      }
 
-nextBtn.addEventListener("click",()=>{ index = (index+1)%totalSlides; updateCarousel(); });
-prevBtn.addEventListener("click",()=>{ index = (index-1+totalSlides)%totalSlides; updateCarousel(); });
+      nextBtn.addEventListener("click", () => {
+        index = (index + 1) % totalSlides;
+        updateCarousel();
+      });
+      prevBtn.addEventListener("click", () => {
+        index = (index - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      });
 
-// Auto-slide
-setInterval(()=>{ index=(index+1)%totalSlides; updateCarousel(); },4000);
-</script>
-
-</body>
+      // Auto-slide
+      setInterval(() => {
+        index = (index + 1) % totalSlides;
+        updateCarousel();
+      }, 4000);
+    </script>
+  </body>
 </html>
