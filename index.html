@@ -63,7 +63,7 @@
         }
       }
 
-      .reverse-slider {
+      /* .reverse-slider {
         animation: scroll-reverse 25s linear infinite;
       }
 
@@ -74,9 +74,41 @@
         100% {
           transform: translateX(0);
         }
-      }
+      } */
 
-      /* Responsive tweaks */
+/* First slider (default speed) */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-slide {
+  animation: slide 20s linear infinite;
+}
+
+/* Second slider (default speed) */
+@keyframes slide-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-slide-reverse {
+  animation: slide-reverse 20s linear infinite;
+}
+
+/* Slower on small screens */
+@media (max-width: 768px) {
+  .animate-slide-reverse {
+    animation-duration: 10s; /* slower */
+  }
+}
+
+/* Faster on large screens (optional) */
+@media (min-width: 1280px) {
+  .animate-slide-reverse {
+    animation-duration: 20s; /* faster */
+  }
+}    /* Responsive tweaks */
       @media (max-width: 640px) {
         .w-64 {
           width: 16rem;
@@ -134,7 +166,7 @@
   <!-- <li><a href="#experience" class="hover:text-cyan-400 px-4 py-2 rounded-md">Experience</a></li> -->
   <li><a href="#projects" class="hover:text-cyan-400 px-4 py-2 rounded-md">Projects</a></li>
   <li><a href="#gallery" class="hover:text-cyan-400 px-4 py-2 rounded-md">Gallery</a></li>
-  <li><a href="#blog" class="hover:text-cyan-400 px-4 py-2 rounded-md">Blog</a></li>
+  <li><a href="#" class="hover:text-cyan-400 px-4 py-2 rounded-md">Sign Up/Log In for info</a></li>
   <li><a href="#contact" class="hover:text-cyan-400 px-4 py-2 rounded-md">Contact</a></li>
 </ul>
 
@@ -159,7 +191,7 @@
         <!-- <a href="#experience" class="block">Experience</a> -->
         <a href="#projects" class="block">Projects</a>
         <a href="#gallery" class="block">Gallery</a>
-        <a href="#blog" class="block">Blog</a>
+        <a href="#" class="block">Sign Up/Log In for info</a>
         <a href="#contact" class="block">Contact</a>
       </div>
     </nav>
@@ -550,220 +582,137 @@
 </section>
 
     <!-- ================= MOVING GALLERY ================= -->
-    <section id="gallery" class="py-24 text-center overflow-hidden fade">
-      <h3 class="text-4xl font-bold text-yellow-400 mb-12">Gallery</h3>
+   <section id="gallery" class="py-24 bg-gradient-to-b from-black via-gray-900 to-black text-center overflow-hidden fade">
+  <h3 class="text-4xl md:text-5xl font-extrabold text-gray-400 mb-12 tracking-wide uppercase">
+    Gallery
+  </h3>
 
-      <!-- First Slider (Left → Right) -->
-      <div class="relative max-w-full overflow-hidden mb-12">
-        <div class="flex slider-track gap-6">
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w1.jpeg"
-            alt="Gallery 1"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w2.jpeg"
-            alt="Gallery 2"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w3.jpeg"
-            alt="Gallery 3"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w4.jpeg"
-            alt="Gallery 4"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w5.jpeg"
-            alt="Gallery 5"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w11.jpeg"
-            alt="Gallery 11"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/13.jpeg"
-            alt="Gallery 13"
-          />
+  <!-- First Slider: Left → Right -->
+  <div class="relative max-w-full overflow-hidden mb-16">
+    <div class="flex animate-slide gap-6">
+      <!-- Loop of images -->
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w3.jpeg" alt="Gallery 3" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w4.jpeg" alt="Gallery 4" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w5.jpeg" alt="Gallery 5" />
+      <!-- Add duplicates for seamless effect -->
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
+    </div>
+  </div>
 
-          <!-- Duplicates for seamless loop -->
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w1.jpeg"
-            alt="Gallery 1"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w2.jpeg"
-            alt="Gallery 2"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w3.jpeg"
-            alt="Gallery 3"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w4.jpeg"
-            alt="Gallery 4"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w5.jpeg"
-            alt="Gallery 5"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w11.jpeg"
-            alt="Gallery 11"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/13.jpeg"
-            alt="Gallery 13"
-          />
-        </div>
-      </div>
+  <!-- Second Slider: Right → Left -->
+  <div class="relative max-w-full overflow-hidden">
+    <div class="flex animate-slide-reverse gap-6">
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w8.jpeg" alt="Gallery 8" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w9.jpeg" alt="Gallery 9" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w10.jpeg" alt="Gallery 10" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
+      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
+    </div>
+  </div>
+</section>
 
-      <!-- Second Slider (Right → Left) -->
-      <div class="relative max-w-full overflow-hidden">
-        <div class="flex slider-track reverse-slider gap-6">
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w6.jpeg"
-            alt="Gallery 6"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w7.jpeg"
-            alt="Gallery 7"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w8.jpeg"
-            alt="Gallery 8"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w9.jpeg"
-            alt="Gallery 9"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w10.jpeg"
-            alt="Gallery 10"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w12.jpeg"
-            alt="Gallery 12"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w14.jpeg"
-            alt="Gallery 14"
-          />
-          <!-- Duplicates for seamless loop -->
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w6.jpeg"
-            alt="Gallery 6"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w7.jpeg"
-            alt="Gallery 7"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w8.jpeg"
-            alt="Gallery 8"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w9.jpeg"
-            alt="Gallery 9"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w10.jpeg"
-            alt="Gallery 10"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w12.jpeg"
-            alt="Gallery 12"
-          />
-          <img
-            class="w-80 h-80 rounded-xl shadow-lg"
-            src="/asset/w14.jpeg"
-            alt="Gallery 14"
-          />
-        </div>
-      </div>
-    </section>
 
-    <!-- ================= BLOG ================= -->
-    <section
-      id="blog"
-      class="py-24 bg-gray-900/40 backdrop-blur text-center px-6 fade-in"
-    >
-      <h3 class="text-4xl font-bold mb-12 text-purple-400">Latest Blog</h3>
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div
-          class="p-6 border border-cyan-500/30 rounded-2xl hover:shadow-lg hover:shadow-cyan-500/40 transition"
-        >
-          Mastering Tailwind CSS
-        </div>
-        <div
-          class="p-6 border border-purple-500/30 rounded-2xl hover:shadow-lg hover:shadow-purple-500/40 transition"
-        >
-          JavaScript Best Practices
-        </div>
-        <div
-          class="p-6 border border-pink-500/30 rounded-2xl hover:shadow-lg hover:shadow-pink-500/40 transition"
-        >
-          AI in Frontend
-        </div>
-      </div>
-    </section>
-
+  
     <!-- ================= CONTACT ================= -->
-    <section id="contact" class="py-24 text-center px-6 fade-in">
-      <h3 class="text-4xl font-bold mb-6 text-cyan-400">Contact Me</h3>
-      <div class="max-w-xl mx-auto space-y-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
-        />
-        <textarea
-          placeholder="Message"
-          class="w-full p-3 bg-black border border-gray-700 rounded-lg"
-        ></textarea>
-        <button
-          class="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:scale-105 transition"
-        >
-          Send Message
-        </button>
+  <section id="contact" class="py-28 px-6 fade-in bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
+  <div class="max-w-3xl mx-auto text-center">
+    <h3 class="text-5xl font-extrabold mb-4 text-cyan-400 tracking-tight">Contact Me</h3>
+    <p class="text-gray-400 mb-12 text-lg">
+      Have a project, idea, or just want to say hello? Drop me a message and I’ll get back to you.
+    </p>
+
+    <!-- Contact Form -->
+    <form 
+      action="https://formspree.io/f/mkoqnynq" 
+      method="POST" 
+      class="bg-black/40 backdrop-blur-md border border-gray-700 rounded-3xl p-8 shadow-2xl space-y-6"
+    >
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required
+        class="w-full p-4 bg-black/60 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+      />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        required
+        class="w-full p-4 bg-black/60 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+      />
+
+      <textarea
+        name="message"
+        placeholder="Your Message"
+        required
+        rows="6"
+        class="w-full p-4 bg-black/60 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:outline-none transition resize-none"
+      ></textarea>
+
+      <button
+        type="submit"
+        class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl text-white font-bold text-lg hover:scale-105 hover:shadow-xl transition duration-300"
+      >
+        Send Message
+      </button>
+    </form>
+
+    <!-- Optional Info -->
+    <div class="mt-12 text-gray-400 space-y-2">
+      <p>Or reach me via email: <a href="mailto:retkatmun@example.com" class="text-cyan-400 hover:underline">retkatmun@example.com</a></p>
+      <p>Follow me on <a href="https://www.linkedin.com/in/gamaliel-retkatmun-73b09a312/" class="text-cyan-400 hover:underline">LinkedIn</a> or <a href="https://github.com/retkatmun" class="text-cyan-400 hover:underline">GitHub</a></p>
+    </div>
+  </div>
+</section>
+
+   <footer class="bg-black/80 backdrop-blur-md border-t border-gray-700 text-gray-300 py-12">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+
+    <!-- About -->
+    <div class="space-y-4">
+      <h4 class="text-xl font-bold text-cyan-400">Scholar Dev</h4>
+      <p class="text-gray-400 text-sm">
+        I build modern web applications, beautiful UI, and seamless digital experiences. Let’s create something amazing together!
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="space-y-2 text-sm">
+      <h4 class="text-lg font-semibold text-purple-400 mb-2">Quick Links</h4>
+      <ul class="space-y-1">
+        <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+        <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
+        <li><a href="/pages/signup.html" class="hover:text-cyan-400 transition">Sign Up / Log In</a></li>
+      </ul>
+    </div>
+
+    <!-- Social & Contact -->
+    <div class="space-y-4 text-sm">
+      <h4 class="text-lg font-semibold text-pink-400 mb-2">Connect</h4>
+      <div class="flex gap-4 text-xl text-gray-300">
+        <a href="https://x.com/Retkatmun164396" class="hover:text-cyan-400 transition"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/gamaliel-retkatmun-73b09a312/" class="hover:text-cyan-400 transition"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/2348136931853" class="hover:text-cyan-400 transition"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://github.com/retkatmun" class="hover:text-cyan-400 transition"><i class="fab fa-github"></i></a>
       </div>
-    </section>
+      <p class="text-gray-400 text-sm">Email: <a href="mailto:retkatmun@example.com" class="text-cyan-400 hover:underline">retkatmun@example.com</a></p>
+    </div>
 
-    <footer class="text-center py-6 text-gray-500">
-      © 2026 Scholar | All Rights Reserved
-    </footer>
+  </div>
 
+  <div class="mt-12 text-center text-gray-500 text-sm border-t border-gray-700 pt-6">
+    © 2026 Scholar Dev | All Rights Reserved
+  </div>
+</footer>
     <script>
       // Mobile Menu
       document.querySelectorAll("#mobileMenu a").forEach((link) => {
