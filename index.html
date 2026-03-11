@@ -79,7 +79,8 @@
 /* First slider (default speed) */
 @keyframes slide {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  /* move the entire track so the duplicated set replaces the first */
+  100% { transform: translateX(-100%); }
 }
 
 .animate-slide {
@@ -88,7 +89,8 @@
 
 /* Second slider (default speed) */
 @keyframes slide-reverse {
-  0% { transform: translateX(-50%); }
+  /* start with the duplicate half offscreen to the left */
+  0% { transform: translateX(-100%); }
   100% { transform: translateX(0); }
 }
 
@@ -99,7 +101,10 @@
 /* Slower on small screens */
 @media (max-width: 768px) {
   .animate-slide-reverse {
-    animation-duration: 10s; /* slower */
+    animation-duration: 15s; /* slower on mobile */
+  }
+  .animate-slide {
+    animation-duration: 15s; /* slower on mobile */
   }
 }
 
@@ -115,6 +120,11 @@
         }
         .h-64 {
           height: 16rem;
+        }
+        /* Ensure gallery images are properly sized on very small screens */
+        #gallery .animate-slide,
+        #gallery .animate-slide-reverse {
+          animation-duration: 20s; /* Even slower on very small screens */
         }
       }
 
@@ -189,6 +199,7 @@
   <li><a href="#gallery" class="hover:text-cyan-400 px-4 py-2 rounded-md">Gallery</a></li>
   <li><a href="#opensource" class="hover:text-cyan-400 px-4 py-2 rounded-md">opensource</a></li>
   <li><a href="#contact" class="hover:text-cyan-400 px-4 py-2 rounded-md">Contact</a></li>
+  <li><a href="blog.html" class="hover:text-cyan-400 px-4 py-2 rounded-md">Blog</a></li>
 </ul>
 
         <div class="flex items-center gap-4">
@@ -214,6 +225,7 @@
         <a href="#gallery" class="block">Gallery</a>
         <a href="#opensource" class="block">opensource</a>
         <a href="#contact" class="block">Contact</a>
+        <a href="blog.html" class="block">Blog</a>
       </div>
     </nav>
 
@@ -649,29 +661,37 @@
 
   <!-- First Slider: Left → Right -->
   <div class="relative max-w-full overflow-hidden mb-16">
-    <div class="flex animate-slide gap-6">
-      <!-- Loop of images -->
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w3.jpeg" alt="Gallery 3" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w4.jpeg" alt="Gallery 4" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w5.jpeg" alt="Gallery 5" />
-      <!-- Add duplicates for seamless effect -->
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
+    <div class="flex animate-slide gap-2 sm:gap-4 md:gap-6">
+      <!-- original set of images -->
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w3.jpeg" alt="Gallery 3" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w4.jpeg" alt="Gallery 4" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w5.jpeg" alt="Gallery 5" />
+      <!-- duplicate full set to guarantee seamless loop on all screen sizes -->
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w1.jpeg" alt="Gallery 1" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w2.jpeg" alt="Gallery 2" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w3.jpeg" alt="Gallery 3" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w4.jpeg" alt="Gallery 4" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w5.jpeg" alt="Gallery 5" />
     </div>
   </div>
 
   <!-- Second Slider: Right → Left -->
   <div class="relative max-w-full overflow-hidden">
-    <div class="flex animate-slide-reverse gap-6">
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w8.jpeg" alt="Gallery 8" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w9.jpeg" alt="Gallery 9" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w10.jpeg" alt="Gallery 10" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
-      <img class="w-72 md:w-80 lg:w-96 h-72 md:h-80 lg:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
+    <div class="flex animate-slide-reverse gap-2 sm:gap-4 md:gap-6">
+      <!-- original set -->
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w8.jpeg" alt="Gallery 8" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w9.jpeg" alt="Gallery 9" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w10.jpeg" alt="Gallery 10" />
+      <!-- duplicates to match original length -->
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w6.jpeg" alt="Gallery 6" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w7.jpeg" alt="Gallery 7" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w8.jpeg" alt="Gallery 8" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w9.jpeg" alt="Gallery 9" />
+      <img class="flex-shrink-0 w-48 sm:w-56 md:w-72 lg:w-80 xl:w-96 h-48 sm:h-56 md:h-72 lg:h-80 xl:h-96 rounded-2xl shadow-2xl object-cover transform transition duration-500 hover:scale-105 hover:brightness-110" src="/asset/w10.jpeg" alt="Gallery 10" />
     </div>
   </div>
 </section>
@@ -928,6 +948,74 @@
         index = (index + 1) % totalSlides;
         updateCarousel();
       }, 4000);
+
+      // ================= ACTIVE NAVIGATION STATE =================
+      function updateActiveNavigation() {
+        const currentPath = window.location.pathname;
+        const currentHash = window.location.hash;
+        
+        // Get all navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        
+        navLinks.forEach(link => {
+          // Remove active states
+          link.classList.remove('bg-cyan-500', 'text-black', 'rounded-full');
+          link.classList.add('hover:text-cyan-400');
+          
+          // Add active state based on current page/section
+          if (currentPath.includes('blog.html') && link.getAttribute('href') === 'blog.html') {
+            link.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
+            link.classList.remove('hover:text-cyan-400');
+          } else if (currentPath === '/' || currentPath.endsWith('index.html')) {
+            if (currentHash === link.getAttribute('href') || 
+                (currentHash === '' && link.getAttribute('href') === '#home')) {
+              link.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
+              link.classList.remove('hover:text-cyan-400');
+            }
+          }
+        });
+      }
+
+      // Update active state on page load
+      updateActiveNavigation();
+      
+      // Update active state when hash changes
+      window.addEventListener('hashchange', updateActiveNavigation);
+      
+      // Update active state when clicking nav links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(updateActiveNavigation, 100);
+        });
+      });
+
+      // Intersection Observer for section highlighting
+      const sections = document.querySelectorAll('section[id]');
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+              const id = entry.target.getAttribute('id');
+              const correspondingLink = document.querySelector(`nav a[href="#${id}"]`);
+              if (correspondingLink) {
+                // Remove active states from all links
+                document.querySelectorAll('nav a').forEach(navLink => {
+                  navLink.classList.remove('bg-cyan-500', 'text-black', 'rounded-full');
+                  navLink.classList.add('hover:text-cyan-400');
+                });
+                // Add active state to current section
+                correspondingLink.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
+                correspondingLink.classList.remove('hover:text-cyan-400');
+              }
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      sections.forEach(section => {
+        navObserver.observe(section);
+      });
 
       
     </script>
