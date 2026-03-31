@@ -190,16 +190,16 @@
         </a>
 <ul class="hidden lg:flex space-x-3 text-gray-300 bg-black-blur rounded-xl border border-gray-700 px-4 py-3">
   <li>
-    <a href="#home" class="bg-cyan-500 text-black px-4 py-2 rounded-full">Home</a>
+    <a href="#home" class="nav-link bg-cyan-500 text-black px-4 py-2 rounded-full" data-section="home">Home</a>
   </li>
-  <li><a href="#about" class="hover:text-cyan-400 px-4 py-2 rounded-md">About</a></li>
-  <li><a href="#services" class="hover:text-cyan-400 px-4 py-2 rounded-md">Stack</a></li>
-  <!-- <li><a href="#experience" class="hover:text-cyan-400 px-4 py-2 rounded-md">Experience</a></li> -->
-  <li><a href="#projects" class="hover:text-cyan-400 px-4 py-2 rounded-md">Projects</a></li>
-  <li><a href="#gallery" class="hover:text-cyan-400 px-4 py-2 rounded-md">Gallery</a></li>
-  <li><a href="#opensource" class="hover:text-cyan-400 px-4 py-2 rounded-md">opensource</a></li>
-  <li><a href="#contact" class="hover:text-cyan-400 px-4 py-2 rounded-md">Contact</a></li>
-  <li><a href="blog.html" class="hover:text-cyan-400 px-4 py-2 rounded-md">Blog</a></li>
+  <li><a href="#about" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="about">About</a></li>
+  <li><a href="#services" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="services">Stack</a></li>
+  <!-- <li><a href="#experience" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="experience">Experience</a></li> -->
+  <li><a href="projects.html" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-page="projects">Projects</a></li>
+  <li><a href="#gallery" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="gallery">Gallery</a></li>
+  <li><a href="#opensource" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="opensource">opensource</a></li>
+  <li><a href="#contact" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-section="contact">Contact</a></li>
+  <li><a href="blog.html" class="nav-link hover:text-cyan-400 px-4 py-2 rounded-md" data-page="blog">Blog</a></li>
 </ul>
 
         <div class="flex items-center gap-4">
@@ -217,15 +217,15 @@
         id="mobileMenu"
         class="hidden lg:hidden bg-black-blur text-center py-6 space-y-4"
       >
-        <a href="#home" class="block">Home</a>
-        <a href="#about" class="block">About</a>
-        <a href="#services" class="block">Stack</a>
-        <!-- <a href="#experience" class="block">Experience</a> -->
-        <a href="#projects" class="block">Projects</a>
-        <a href="#gallery" class="block">Gallery</a>
-        <a href="#opensource" class="block">opensource</a>
-        <a href="#contact" class="block">Contact</a>
-        <a href="blog.html" class="block">Blog</a>
+        <a href="#home" class="mobile-nav-link block" data-section="home">Home</a>
+        <a href="#about" class="mobile-nav-link block" data-section="about">About</a>
+        <a href="#services" class="mobile-nav-link block" data-section="services">Stack</a>
+        <!-- <a href="#experience" class="mobile-nav-link block" data-section="experience">Experience</a> -->
+        <a href="projects.html" class="mobile-nav-link block" data-page="projects">Projects</a>
+        <a href="#gallery" class="mobile-nav-link block" data-section="gallery">Gallery</a>
+        <a href="#opensource" class="mobile-nav-link block" data-section="opensource">opensource</a>
+        <a href="#contact" class="mobile-nav-link block" data-section="contact">Contact</a>
+        <a href="blog.html" class="mobile-nav-link block" data-page="blog">Blog</a>
       </div>
     </nav>
 
@@ -541,129 +541,7 @@
       xpertise in Graphic Design, delivering visually engaging and highly functional digital experiences</p>
     </section> -->
 
-    <!-- ================= PROJECTS ================= -->
-  <section id="projects" class="py-24 bg-gradient-to-b from-black via-gray-900 to-black text-white px-6">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-5xl md:text-6xl font-extrabold mb-12 text-purple-400 uppercase tracking-tight text-center">
-      My Projects
-    </h2>
-
-    <p class="text-gray-400 text-lg text-center mb-16">
-      A mix of public projects you can explore and private projects I crafted for clients.
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-12">
-      <!-- Public Projects -->
-      <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl hover:scale-105 transform transition duration-500">
-        <img src="/asset/webboot.png" alt="Project 1" class="w-full h-64 object-cover group-hover:brightness-75 transition duration-500">
-        <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-500 text-center p-6">
-          <h3 class="text-2xl font-bold text-purple-400 mb-2">web boot</h3>
-          <p class="text-gray-300 text-sm">HTML & CSS Crash Tutorials</p>
-          <a href="https://web-boots.netlify.app/" class="mt-4 px-6 py-2 bg-purple-500 rounded-full text-white text-sm font-semibold hover:bg-purple-600 transition">View</a>
-        </div>
-      </div>
-
-      <!-- Public Projects -->
-      <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl hover:scale-105 transform transition duration-500">
-        <img src="/asset/cgpa.jpeg" alt="CGPA simulator" class="w-full h-64 object-cover group-hover:brightness-75 transition duration-500">
-        <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-500 text-center p-6">
-          <h3 class="text-2xl font-bold text-purple-400 mb-2">GPA/CGPA Calculator</h3>
-          <p class="text-gray-300 text-sm">Help student calculate GPA/CGPA  </p>
-          <a href="" class="mt-4 px-6 py-2 bg-purple-500 rounded-full text-white text-sm font-semibold hover:bg-purple-600 transition">View</a>
-        </div>
-      </div>
-
-
-      <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl hover:scale-105 transform transition duration-500">
-        <img src="/asset/gwan.png" alt="Project 2" class="w-full h-64 object-cover group-hover:brightness-75 transition duration-500">
-        <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-500 text-center p-6">
-          <h3 class="text-2xl font-bold text-cyan-400 mb-2">GwanIzak</h3>
-          <p class="text-gray-300 text-sm">music website</p>
-          <a href="https://gwann.netlify.app/" class="mt-4 px-6 py-2 bg-cyan-500 rounded-full text-white text-sm font-semibold hover:bg-cyan-600 transition">View</a>
-        </div>
-      </div>
-
-      <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-2xl hover:scale-105 transform transition duration-500">
-        <img src="/asset/kku.png" alt="Project 3" class="w-full h-64 object-cover group-hover:brightness-75 transition duration-500">
-        <div class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-500 text-center p-6">
-          <h3 class="text-2xl font-bold text-pink-400 mb-2">kku chapel</h3>
-          <p class="text-gray-300 text-sm">church website still in progress</p>
-          <a href="https://kku-chapel.netlify.app/" class="mt-4 px-6 py-2 bg-pink-500 rounded-full text-white text-sm font-semibold hover:bg-pink-600 transition">View</a>
-        </div>
-      </div>
-
-     <!-- Project Four -->
-<div class="relative group overflow-hidden rounded-3xl shadow-2xl cursor-not-allowed">
-  <img src="/asset/coming.jpg" alt="Project 4" class="w-full h-64 object-cover brightness-50">
-  <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-    <h3 class="text-2xl font-bold text-purple-400 mb-2">Project Four</h3>
-    <p class="text-gray-300 text-sm mb-4">React + Tailwind App</p>
-    <span class="mt-4 px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold">
-      Coming Soon
-    </span>
-  </div>
-</div>
-
-<!-- Project Five -->
-<div class="relative group overflow-hidden rounded-3xl shadow-2xl cursor-not-allowed">
-  <img src="/asset/coming.jpg" alt="Project 5" class="w-full h-64 object-cover brightness-50">
-  <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Project Five</h3>
-    <p class="text-gray-300 text-sm mb-4">Next.js + Tailwind App</p>
-    <span class="mt-4 px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold">
-      Coming Soon
-    </span>
-  </div>
-</div>
-
-<!-- Project Six -->
-<div class="relative group overflow-hidden rounded-3xl shadow-2xl cursor-not-allowed">
-  <img src="/asset/coming.jpg" alt="Project 6" class="w-full h-64 object-cover brightness-50">
-  <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-    <h3 class="text-2xl font-bold text-pink-400 mb-2">Project Six</h3>
-    <p class="text-gray-300 text-sm mb-4">Tailwind + React Portfolio</p>
-    <span class="mt-4 px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold">
-      Coming Soon
-    </span>
-  </div>
-</div>
-
-
-      <!-- Private Projects (blurred/locked) -->
-      <!-- Repeat 10 times for private projects -->
-      <div class="relative overflow-hidden rounded-3xl shadow-2xl bg-gray-800/70 h-64 flex items-center justify-center text-center p-6">
-  <div>
-    <h3 class="text-2xl font-bold text-pink-400 mb-2">Private Project</h3>
-    <p class="text-gray-500 text-sm mb-4">Confidential</p>
-    <span class="px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold cursor-not-allowed">
-      Locked
-    </span>
-  </div>
-</div>
-<div class="relative overflow-hidden rounded-3xl shadow-2xl bg-gray-800/70 h-64 flex items-center justify-center text-center p-6">
-  <div>
-    <h3 class="text-2xl font-bold text-pink-400 mb-2">Private Project</h3>
-    <p class="text-gray-500 text-sm mb-4">Confidential</p>
-    <span class="px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold cursor-not-allowed">
-      Locked
-    </span>
-  </div>
-</div>
-<div class="relative overflow-hidden rounded-3xl shadow-2xl bg-gray-800/70 h-64 flex items-center justify-center text-center p-6">
-  <div>
-    <h3 class="text-2xl font-bold text-pink-400 mb-2">Private Project</h3>
-    <p class="text-gray-500 text-sm mb-4">Confidential</p>
-    <span class="px-6 py-2 bg-gray-700 rounded-full text-gray-300 text-sm font-semibold cursor-not-allowed">
-      Locked
-    </span>
-  </div>
-</div>
-      <!-- Repeat 9 more times, changing alt if needed -->
-      
-    </div>
-  </div>
-</section>
-
+    
     <!-- ================= MOVING GALLERY ================= -->
    <section id="gallery" class="py-24 bg-gradient-to-b from-black via-gray-900 to-black text-center overflow-hidden fade">
   <h3 class="text-4xl md:text-5xl font-extrabold text-gray-400 mb-12 tracking-wide uppercase">
@@ -960,26 +838,42 @@
         updateCarousel();
       }, 4000);
 
-      // ================= ACTIVE NAVIGATION STATE =================
-      function updateActiveNavigation() {
-        const currentPath = window.location.pathname;
-        const currentHash = window.location.hash;
-        
-        // Get all navigation links
-        const navLinks = document.querySelectorAll('nav a');
-        
-        navLinks.forEach(link => {
-          // Remove active states
+      // ================= CLICK-BASED ACTIVE NAVIGATION =================
+      function setActiveNavLink(clickedLink) {
+        // Remove active states from all desktop nav links
+        document.querySelectorAll('ul.hidden.lg:flex a').forEach(link => {
           link.classList.remove('bg-cyan-500', 'text-black', 'rounded-full');
           link.classList.add('hover:text-cyan-400');
-          
-          // Add active state based on current page/section
-          if (currentPath.includes('blog.html') && link.getAttribute('href') === 'blog.html') {
-            link.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
-            link.classList.remove('hover:text-cyan-400');
-          } else if (currentPath === '/' || currentPath.endsWith('index.html')) {
-            if (currentHash === link.getAttribute('href') || 
-                (currentHash === '' && link.getAttribute('href') === '#home')) {
+        });
+        
+        // Remove active states from all mobile nav links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+          link.classList.remove('text-cyan-400', 'font-bold');
+        });
+        
+        // Add active state to clicked link
+        if (clickedLink.closest('ul').classList.contains('hidden')) {
+          // Desktop navigation
+          clickedLink.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
+          clickedLink.classList.remove('hover:text-cyan-400');
+        } else {
+          // Mobile navigation
+          clickedLink.classList.add('text-cyan-400', 'font-bold');
+        }
+        
+        // Also activate the corresponding link in the other menu
+        const href = clickedLink.getAttribute('href');
+        const otherMenuLinks = clickedLink.closest('ul').classList.contains('hidden') 
+          ? document.querySelectorAll('#mobileMenu a') 
+          : document.querySelectorAll('ul.hidden.lg:flex a');
+        
+        otherMenuLinks.forEach(link => {
+          if (link.getAttribute('href') === href) {
+            if (link.closest('ul').classList.contains('hidden')) {
+              // Mobile menu link
+              link.classList.add('text-cyan-400', 'font-bold');
+            } else {
+              // Desktop menu link
               link.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
               link.classList.remove('hover:text-cyan-400');
             }
@@ -987,48 +881,65 @@
         });
       }
 
-      // Update active state on page load
-      updateActiveNavigation();
-      
-      // Update active state when hash changes
-      window.addEventListener('hashchange', updateActiveNavigation);
-      
-      // Update active state when clicking nav links
       document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          setTimeout(updateActiveNavigation, 100);
+        link.addEventListener('click', function(e) {
+          // Don't prevent default behavior - let links work normally
+          setActiveNavLink(this);
         });
       });
 
-      // Intersection Observer for section highlighting
-      const sections = document.querySelectorAll('section[id]');
-      const navObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-              const id = entry.target.getAttribute('id');
-              const correspondingLink = document.querySelector(`nav a[href="#${id}"]`);
-              if (correspondingLink) {
-                // Remove active states from all links
-                document.querySelectorAll('nav a').forEach(navLink => {
-                  navLink.classList.remove('bg-cyan-500', 'text-black', 'rounded-full');
-                  navLink.classList.add('hover:text-cyan-400');
-                });
-                // Add active state to current section
-                correspondingLink.classList.add('bg-cyan-500', 'text-black', 'rounded-full');
-                correspondingLink.classList.remove('hover:text-cyan-400');
-              }
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      
-      sections.forEach(section => {
-        navObserver.observe(section);
-      });
+      // Set initial active state based on current URL/hash
+      function setInitialActiveState() {
+        const currentHash = window.location.hash || '#home';
+        const currentPath = window.location.pathname;
+        
+        // Find the matching link
+        let activeLink = null;
+        
+        if (currentPath.includes('projects.html')) {
+          activeLink = document.querySelector('a[href="projects.html"]');
+        } else if (currentPath.includes('blog.html')) {
+          activeLink = document.querySelector('a[href="blog.html"]');
+        } else {
+          activeLink = document.querySelector(`a[href="${currentHash}"]`) || document.querySelector('a[href="#home"]');
+        }
+        
+        if (activeLink) {
+          setActiveNavLink(activeLink);
+        }
+      }
 
+      setInitialActiveState();
+
+      // Scroll-based active link
+const sections = document.querySelectorAll("section[id]");
+
+window.addEventListener("scroll", () => {
+  let scrollY = window.scrollY + window.innerHeight / 2; // middle of viewport
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute("id");
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      // Try to find section link first
+      let activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
       
+      // If no section link found, try page links
+      if (!activeLink) {
+        if (sectionId === 'home') activeLink = document.querySelector('a[href="#home"]');
+        if (sectionId === 'about') activeLink = document.querySelector('a[href="#about"]');
+        if (sectionId === 'services') activeLink = document.querySelector('a[href="#services"]');
+        if (sectionId === 'gallery') activeLink = document.querySelector('a[href="#gallery"]');
+        if (sectionId === 'opensource') activeLink = document.querySelector('a[href="#opensource"]');
+        if (sectionId === 'contact') activeLink = document.querySelector('a[href="#contact"]');
+      }
+      
+      if (activeLink) setActiveNavLink(activeLink);
+    }
+  });
+});
     </script>
   </body>
 </html>
